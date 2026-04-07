@@ -11,6 +11,10 @@ app.get("/health", (_req, res) => {
   res.json({ ok: true });
 });
 
+app.get("/", (req, res)=> {
+  res.send("Backend is working")
+})
+
 app.use("/api/voice-chat", voiceChatRouter);
 
 const port = Number(process.env.PORT) || 3000;
