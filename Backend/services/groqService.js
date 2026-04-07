@@ -115,7 +115,7 @@ export async function getGroqResponse(transcript, sessionId = "default") {
         ...history,
       ],
       temperature: 0.7,
-      max_tokens: 300, // ⬆️ Increased to avoid cut-off during confirmation
+      max_tokens: 300,
     });
 
     const answer = response.choices?.[0]?.message?.content;
@@ -126,7 +126,7 @@ export async function getGroqResponse(transcript, sessionId = "default") {
 
     history.push({ role: "assistant", content: answer });
 
-    // Keep last 20 messages but never cut mid-appointment-flow
+  
     if (history.length > 20) {
       history.splice(0, 2);
     }
